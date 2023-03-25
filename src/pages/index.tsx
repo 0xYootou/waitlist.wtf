@@ -122,7 +122,7 @@ export default function Home() {
             }}
           >
             <a
-              href="https://github.com/0xYootou/waitlist.wtf"
+              href="https://github.com/waitlist-wtf/waitlist.wtf"
               style={{}}
               target="_blank"
             >
