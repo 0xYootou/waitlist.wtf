@@ -118,18 +118,21 @@ export function List() {
                 </div>
                 <div
                   style={{
-                    fontSize: '13px',
-                    color: '#777',
+                    fontSize: '12px',
+                    lineHeight: '20px',
                     marginTop: '10px',
-                    display: 'flex',
-                    gap: '10px',
+                    color: '#777',
                   }}
-                ></div>
+                >
+                  {item.properties.Desc.rich_text.map((title: any) => {
+                    return <span key={title.id}>{title.plain_text}</span>;
+                  })}
+                </div>
                 <div
                   style={{
                     fontSize: '13px',
                     color: '#777',
-                    marginTop: '20px',
+                    marginTop: '15px',
                     display: 'flex',
                     gap: '10px',
                     justifyContent: 'flex-start',
