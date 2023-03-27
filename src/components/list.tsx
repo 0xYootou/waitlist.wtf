@@ -60,6 +60,7 @@ export function List() {
                 borderRadius: '8px',
                 display: 'block',
                 width: '100%',
+                height: '100%',
                 '&:hover': {
                   background: '#333',
                 },
