@@ -7,6 +7,7 @@ import NewsLetterSignUpForm from '../components/form';
 import toast, { Toaster } from 'react-hot-toast';
 import { Tooltip } from '@nextui-org/react';
 import { Text } from '@nextui-org/react';
+import { List } from '../components/list';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
@@ -118,7 +119,7 @@ export default function Home() {
               alignItems: 'center',
               justifyContent: 'center',
               gap: '20px',
-              margin: '40px 0',
+              margin: '20px 0 40px 0',
             }}
           >
             <a
@@ -203,7 +204,9 @@ It is desperate that the website function has not yet been developed. You need t
             </a>
           </div>
         </div>
-        <Toaster />
+
+        <List />
+
         <div
           style={{
             width: '300px',
@@ -212,6 +215,9 @@ It is desperate that the website function has not yet been developed. You need t
             alignItems: 'center',
             flexDirection: 'column',
             marginBottom: '100px',
+            marginTop: '90px',
+            borderTop: '1px solid #eee',
+            paddingTop: '20px',
           }}
         >
           <div
@@ -228,6 +234,7 @@ It is desperate that the website function has not yet been developed. You need t
             <img src="/ad.png" alt="chrome" width={'200px'} />
           </a>
         </div>
+        <Toaster />
       </main>
     </>
   );

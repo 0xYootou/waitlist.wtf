@@ -3,6 +3,7 @@ import { Client } from '@notionhq/client';
 const auth = process.env.NOTION_ACCESS_TOKEN;
 
 const database = process.env.NOTION_DATABASE_QUESTION_ID ?? '';
+const databaseList = process.env.NOTION_DATABASE_QUESTION_ID_LIST ?? '';
 
 type Question = any;
 
@@ -13,9 +14,9 @@ export default class NotionService {
     this.client = new Client({ auth });
   }
 
-  async query(): Promise<Question[]> {
+  async queryWaitlist(): Promise<Question[]> {
     const response = await this.client.databases.query({
-      database_id: database,
+      database_id: databaseList,
     });
 
     return response.results;
