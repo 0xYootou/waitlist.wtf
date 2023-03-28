@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Link } from '@nextui-org/react';
+import { Badge, Button, Card, Container, Link } from '@nextui-org/react';
 import {
   PageObjectResponse,
   PartialPageObjectResponse,
@@ -35,40 +35,51 @@ export function List() {
   }, []);
 
   return (
-    <div
-      style={{
+    <Container
+      css={{
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         gap: '20px',
-        width: '670px',
+        width: '720px',
+        '@media (max-width: 768px)': {
+          width: '90%',
+        },
       }}
     >
       {list.map((item: any) => {
         return (
           <Card
             key={item.id}
-            style={{
+            css={{
               width: '320px',
+              background: '#333',
+              '@media (max-width: 768px)': {
+                width: '100%',
+              },
+              '&:hover': {
+                background: '#333',
+              },
             }}
           >
-            <Link
-              css={{
-                background: '#333',
+            <a
+              style={{
                 color: '#fff',
                 borderRadius: '8px',
                 display: 'block',
                 width: '100%',
                 height: '100%',
-                '&:hover': {
-                  background: '#333',
-                },
               }}
               target="_blank"
               href={item.properties.Link.url}
             >
-              <div style={{ padding: '25px 25px', width: '320px' }}>
+              <Container
+                css={{
+                  padding: '25px 25px',
+                  width: '100%',
+                }}
+              >
                 <div
                   style={{
                     fontSize: '18px',
@@ -139,15 +150,24 @@ export function List() {
                     justifyContent: 'flex-start',
                   }}
                 >
-                  <Button size="sm" auto={true} color={'success'}>
-                    Join
+                  <Button
+                    size="sm"
+                    auto={true}
+                    color={'success'}
+                    disabled={
+                      item.properties.Status.status.name == 'Not started'
+                    }
+                  >
+                    {item.properties.Status.status.name == 'Not started'
+                      ? 'Not started'
+                      : 'Join'}
                   </Button>
                 </div>
-              </div>
-            </Link>
+              </Container>
+            </a>
           </Card>
         );
       })}
-    </div>
+    </Container>
   );
 }

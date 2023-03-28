@@ -204,7 +204,24 @@ It is desperate that the website function has not yet been developed. You need t
             </a>
           </div>
         </div>
-
+        <h1
+          style={{
+            marginBottom: '10px',
+            textAlign: 'center',
+            marginTop: '50px',
+          }}
+        >
+          <Text
+            h1
+            size={25}
+            css={{
+              textGradient: '45deg, $blue600 -20%, $pink600 50%',
+            }}
+            weight="bold"
+          >
+            Join wait list
+          </Text>
+        </h1>
         <List />
 
         <div
