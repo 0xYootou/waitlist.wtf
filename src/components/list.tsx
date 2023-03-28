@@ -1,4 +1,11 @@
-import { Badge, Button, Card, Container, Link } from '@nextui-org/react';
+import {
+  Badge,
+  Button,
+  Card,
+  Container,
+  Link,
+  Loading,
+} from '@nextui-org/react';
 import {
   PageObjectResponse,
   PartialPageObjectResponse,
@@ -37,137 +44,157 @@ export function List() {
   return (
     <Container
       css={{
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: '20px',
         width: '720px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         '@media (max-width: 768px)': {
-          width: '90%',
+          width: '100%',
         },
       }}
     >
-      {list.map((item: any) => {
-        return (
-          <Card
-            key={item.id}
-            css={{
-              width: '320px',
-              background: '#333',
-              '@media (max-width: 768px)': {
-                width: '100%',
-              },
-              '&:hover': {
+      {loading && (
+        <Loading
+          style={{
+            margin: '50px auto',
+          }}
+        />
+      )}
+      <Container
+        css={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          gap: '20px',
+          width: '720px',
+          '@media (max-width: 768px)': {
+            width: '90%',
+          },
+        }}
+      >
+        {list.map((item: any) => {
+          return (
+            <Card
+              key={item.id}
+              css={{
+                width: '320px',
                 background: '#333',
-              },
-            }}
-          >
-            <a
-              style={{
-                color: '#fff',
-                borderRadius: '8px',
-                display: 'block',
-                width: '100%',
-                height: '100%',
-              }}
-              target="_blank"
-              href={item.properties.Link.url}
-            >
-              <Container
-                css={{
-                  padding: '25px 25px',
+                '@media (max-width: 768px)': {
                   width: '100%',
+                },
+                '&:hover': {
+                  background: '#333',
+                },
+              }}
+            >
+              <a
+                style={{
+                  color: '#fff',
+                  borderRadius: '8px',
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                 }}
+                target="_blank"
+                href={item.properties.Link.url}
               >
-                <div
-                  style={{
-                    fontSize: '18px',
-                    lineHeight: '25px',
+                <Container
+                  css={{
+                    padding: '25px 25px',
+                    width: '100%',
                   }}
                 >
-                  {item.properties.Name.title.map((title: any) => {
-                    return <span key={title.id}>{title.text.content}</span>;
-                  })}
-                </div>
-                <div
-                  style={{
-                    fontSize: '13px',
-                    color: '#777',
-                    marginTop: '10px',
-                    display: 'flex',
-                    gap: '10px',
-                  }}
-                >
-                  <Badge
-                    disableOutline={true}
-                    size="xs"
+                  <div
                     style={{
-                      fontWeight: 'normal',
-                      fontSize: '12px',
-                      padding: '3px 8px',
-                      background: '#555',
+                      fontSize: '18px',
+                      lineHeight: '25px',
                     }}
                   >
-                    {item.properties.Status.status.name}
-                  </Badge>
-                  {item.properties.Tag.multi_select.map((tag: any) => {
-                    return (
-                      <Badge
-                        disableOutline={true}
-                        size="xs"
-                        style={{
-                          fontWeight: 'normal',
-                          fontSize: '12px',
-                          padding: '3px 8px',
-                        }}
-                        key={tag.id}
-                      >
-                        {tag.name}
-                      </Badge>
-                    );
-                  })}
-                </div>
-                <div
-                  style={{
-                    fontSize: '12px',
-                    lineHeight: '20px',
-                    marginTop: '10px',
-                    color: '#777',
-                  }}
-                >
-                  {item.properties.Desc.rich_text.map((title: any) => {
-                    return <span key={title.id}>{title.plain_text}</span>;
-                  })}
-                </div>
-                <div
-                  style={{
-                    fontSize: '13px',
-                    color: '#777',
-                    marginTop: '15px',
-                    display: 'flex',
-                    gap: '10px',
-                    justifyContent: 'flex-start',
-                  }}
-                >
-                  <Button
-                    size="sm"
-                    auto={true}
-                    color={'success'}
-                    disabled={
-                      item.properties.Status.status.name == 'Not started'
-                    }
+                    {item.properties.Name.title.map((title: any) => {
+                      return <span key={title.id}>{title.text.content}</span>;
+                    })}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '13px',
+                      color: '#777',
+                      marginTop: '10px',
+                      display: 'flex',
+                      gap: '10px',
+                    }}
                   >
-                    {item.properties.Status.status.name == 'Not started'
-                      ? 'Not started'
-                      : 'Join'}
-                  </Button>
-                </div>
-              </Container>
-            </a>
-          </Card>
-        );
-      })}
+                    <Badge
+                      disableOutline={true}
+                      size="xs"
+                      style={{
+                        fontWeight: 'normal',
+                        fontSize: '12px',
+                        padding: '3px 8px',
+                        background: '#555',
+                      }}
+                    >
+                      {item.properties.Status.status.name}
+                    </Badge>
+                    {item.properties.Tag.multi_select.map((tag: any) => {
+                      return (
+                        <Badge
+                          disableOutline={true}
+                          size="xs"
+                          style={{
+                            fontWeight: 'normal',
+                            fontSize: '12px',
+                            padding: '3px 8px',
+                          }}
+                          key={tag.id}
+                        >
+                          {tag.name}
+                        </Badge>
+                      );
+                    })}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '12px',
+                      lineHeight: '20px',
+                      marginTop: '10px',
+                      color: '#777',
+                    }}
+                  >
+                    {item.properties.Desc.rich_text.map((title: any) => {
+                      return <span key={title.id}>{title.plain_text}</span>;
+                    })}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '13px',
+                      color: '#777',
+                      marginTop: '15px',
+                      display: 'flex',
+                      gap: '10px',
+                      justifyContent: 'flex-start',
+                    }}
+                  >
+                    <Button
+                      size="sm"
+                      auto={true}
+                      color={'success'}
+                      disabled={
+                        item.properties.Status.status.name == 'Not started'
+                      }
+                    >
+                      {item.properties.Status.status.name == 'Not started'
+                        ? 'Not started'
+                        : 'Join'}
+                    </Button>
+                  </div>
+                </Container>
+              </a>
+            </Card>
+          );
+        })}
+      </Container>
     </Container>
   );
 }
