@@ -208,7 +208,7 @@ It is desperate that the website function has not yet been developed. You need t
           style={{
             marginBottom: '10px',
             textAlign: 'center',
-            marginTop: '50px',
+            marginTop: '0px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -221,7 +221,7 @@ It is desperate that the website function has not yet been developed. You need t
             }}
             weight="bold"
           >
-            Join wait list
+            Join waitlist
           </Text>
         </div>
         <List />

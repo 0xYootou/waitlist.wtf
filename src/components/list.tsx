@@ -44,7 +44,7 @@ export function List() {
   return (
     <Container
       css={{
-        width: '720px',
+        width: '680px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -60,7 +60,7 @@ export function List() {
       <Button
         auto={true}
         style={{
-          margin: '10px 0 20px 0',
+          margin: '10px 0 30px 0',
         }}
         color={'success'}
         onClick={() => {
@@ -82,9 +82,9 @@ export function List() {
           flexDirection: 'row',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
-          gap: '20px',
           width: '100%',
           padding: 0,
+          gap: '20px',
           '@media (max-width: 768px)': {
             width: '90%',
           },
@@ -95,7 +95,7 @@ export function List() {
             <Card
               key={item.id}
               css={{
-                width: '320px',
+                width: '330px',
                 background: '#333',
                 '@media (max-width: 768px)': {
                   width: '100%',
