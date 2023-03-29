@@ -49,11 +49,26 @@ export function List() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        padding: 0,
+
         '@media (max-width: 768px)': {
           width: '100%',
         },
       }}
     >
+      <Button
+        auto={true}
+        style={{
+          margin: '10px 0 20px 0',
+        }}
+        color={'success'}
+        onClick={() => {
+          window.location.href = 'https://notionforms.io/forms/submit-waitlist';
+        }}
+      >
+        Report new Waitlist
+      </Button>
       {loading && (
         <Loading
           style={{
@@ -68,7 +83,8 @@ export function List() {
           flexWrap: 'wrap',
           justifyContent: 'space-between',
           gap: '20px',
-          width: '720px',
+          width: '100%',
+          padding: 0,
           '@media (max-width: 768px)': {
             width: '90%',
           },
